@@ -13,11 +13,11 @@ type Props = BaseProps & {
 
 const DialogConfirmDeleteChat: React.FC<Props> = (props) => {
   return (
-    <ModalDialog {...props} title="削除確認">
+    <ModalDialog {...props} title="Delete Confirmation">
       <div>
-        チャット
+        Chat
         <span className="font-bold">「{props.target?.title}」</span>
-        を削除しますか？
+        Do you want to delete it?
       </div>
 
       <div className="mt-4 flex justify-end gap-2">
@@ -33,7 +33,7 @@ const DialogConfirmDeleteChat: React.FC<Props> = (props) => {
           }}
           className="bg-red-500 text-aws-font-color-white p-2"
         >
-          削除
+          delete
         </Button>
       </div>
     </ModalDialog>

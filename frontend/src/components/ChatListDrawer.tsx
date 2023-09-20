@@ -81,7 +81,7 @@ const Item: React.FC<ItemProps> = (props) => {
         if (e.key === 'Enter' && !e.shiftKey) {
           e.preventDefault();
 
-          // dispatch 処理の中で Title の更新を行う（同期を取るため）
+          // dispatch in process Title Update (synchronize)
           setTempLabel((newLabel) => {
             updateTitle(props.to, newLabel).then(() => {
               setEditing(false);
@@ -196,6 +196,7 @@ const ChatListDrawer: React.FC<Props> = (props) => {
 
   useEffect(() => {
     // 新規チャットの場合はTitleをLazy表示にする
+    //Display title as lazy for new chats
     if (!conversations || !prevConversations) {
       return;
     }
@@ -291,7 +292,7 @@ const ChatListDrawer: React.FC<Props> = (props) => {
               className="h-full w-full bg-aws-squid-ink"
               onClick={onClickNewChat}
               icon={<PiPlus />}>
-              新規チャット
+              New chat
             </Button>
           </div>
 
@@ -318,7 +319,7 @@ const ChatListDrawer: React.FC<Props> = (props) => {
               text
               icon={<PiSignOut />}
               onClick={props.onSignOut}>
-              サインアウト
+              sign out
             </Button>
           </div>
         </nav>

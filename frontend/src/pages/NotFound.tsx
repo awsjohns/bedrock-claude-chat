@@ -8,7 +8,7 @@ const NotFound: React.FC = () => {
         <PiSmileyXEyesFill />
         404 ERROR
       </div>
-      <div className="mt-4 text-lg">お探しのページが見つかりませんでした。</div>
+      <div className="mt-4 text-lg">The page you are looking for could not be found</div>
     </div>
   );
 };
