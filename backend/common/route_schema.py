@@ -11,7 +11,7 @@ class BaseSchema(BaseModel):
 
 
 class Content(BaseSchema):
-    content_type: Literal["text"] = Field(..., description="現在textのみ")
+    content_type: Literal["text"] = Field(..., description="Currently")
     body: str
 
 
@@ -29,8 +29,8 @@ class MessageOutput(BaseSchema):
 
 
 class ChatInput(BaseSchema):
-    conversation_id: str = Field("", description="会話ID")
-    message: MessageInput = Field(..., description="メッセージの内容")
+    conversation_id: str = Field("", description="Conversation ID")
+    message: MessageInput = Field(..., description="inside the message")
 
 
 class ChatInputWithToken(ChatInput):
@@ -39,8 +39,8 @@ class ChatInputWithToken(ChatInput):
 
 class ChatOutput(BaseSchema):
     conversation_id: str | None = Field(...)
-    message: MessageOutput = Field(..., description="メッセージの内容")
-    create_time: float = Field(..., description="作成日時")
+    message: MessageOutput = Field(..., description="of the message")
+    create_time: float = Field(..., description="Created date")
 
 
 class ConversationMeta(BaseSchema):
@@ -53,7 +53,7 @@ class Conversation(BaseSchema):
     id: str
     title: str
     create_time: float
-    messages: list[MessageOutput] = Field(..., description="メッセージの内容")
+    messages: list[MessageOutput] = Field(..., description="inside the message")
 
 
 class NewTitleInput(BaseSchema):

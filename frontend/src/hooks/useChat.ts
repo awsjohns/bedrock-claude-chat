@@ -184,7 +184,7 @@ const useChat = () => {
         body: content,
         contentType: 'text',
       },
-      model: 'claude',
+      model: 'titan',
       role: 'user',
     };
     const input: PostMessageRequest = {
@@ -203,7 +203,7 @@ const useChat = () => {
         contentType: 'text',
         body: '',
       },
-      model: 'claude',
+      model: 'titan',
     });
 
     postStreaming(input, (c: string) => {

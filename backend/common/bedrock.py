@@ -9,7 +9,7 @@ client = get_bedrock_client()
 
 
 def _create_body(model: str, prompt: str):
-    if model == "claude":
+    if model == "titan":
         parameter = GENERATION_CONFIG
         parameter["prompt"] = prompt
         return json.dumps(parameter)
@@ -18,7 +18,7 @@ def _create_body(model: str, prompt: str):
 
 
 def _extract_output_text(model: str, response) -> str:
-    if model == "claude":
+    if model == "titan":
         output = json.loads(response.get("body").read())
         output_txt = output["completion"]
         if output_txt[0] == " ":
@@ -30,8 +30,8 @@ def _extract_output_text(model: str, response) -> str:
 
 
 def get_model_id(model: str) -> str:
-    if model == "claude":
-        return "anthropic.claude-v2"
+    if model == "titan":
+        return "amazon.titan-tg1-large"
     else:
         raise NotImplementedError()
 

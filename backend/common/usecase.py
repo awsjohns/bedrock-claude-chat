@@ -104,8 +104,8 @@ def chat(user_id: str, chat_input: ChatInput) -> ChatOutput:
 def propose_conversation_title(
     user_id: str, conversation_id: str, model="claude"
 ) -> str:
-    assert model == "claude", "Only claude model is supported for now."
-    PROMPT = """この会話に件名を一言でつけてください。出力は件名だけにしてください。その他の文字は一切出力しないでください。言語は推測してください（英語なら英語で出力）。"""
+    #assert model == "claude", "Only claude model is supported for now."
+    PROMPT = """Please give this conversation a one-word subject line. Please output only the subject line. Do not output any other characters. Please guess the language (if it is English, output in English)."""
 
     # Fetch existing conversation
     conversation = find_conversation_by_id(user_id, conversation_id)

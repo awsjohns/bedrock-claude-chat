@@ -42,7 +42,7 @@ const App: React.FC = () => {
       components={{
         Header: () => (
           <div className="mb-5 mt-10 flex justify-center text-3xl text-aws-font-color">
-            Bedrock Claude Chat
+            Amazon Bedrock Chat
           </div>
         ),
       }}>

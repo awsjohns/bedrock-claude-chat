@@ -45,7 +45,7 @@ const ChatPage: React.FC = () => {
         {messages.length === 0 ? (
           <>
             <div className="mx-3 my-32 flex items-center justify-center text-4xl font-bold text-gray-500/20">
-              Bedrock Claude Chat
+              Amazon Bedrock Chat
             </div>
           </>
         ) : (

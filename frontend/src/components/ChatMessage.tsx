@@ -15,7 +15,7 @@ const ChatMessage: React.FC<Props> = (props) => {
   const chatContent = useMemo<MessageContent | undefined>(() => {
     if (props.loading) {
       return {
-        model: "claude",
+        model: "titan",
         content: {
           body: "",
           contentType: "text",

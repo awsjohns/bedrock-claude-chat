@@ -6,12 +6,12 @@ from bedrock import client, invoke
 from repositories.model import ContentModel, MessageModel
 from utils import get_buffer_string
 
-MODEL = "claude"
+MODEL = "titan"
 
 
 class TestBedrock(unittest.TestCase):
     def test_invoke(self):
-        prompt = "日本のおすすめのアニメを教えて"
+        prompt = "Recommended Japanese anime"
         model = MODEL
 
         reply_txt = invoke(prompt, model)
@@ -24,7 +24,7 @@ class TestBedrock(unittest.TestCase):
                 role="user",
                 content=ContentModel(
                     content_type="text",
-                    body="こんにちは",
+                    body="Hello",
                 ),
                 model=MODEL,
                 create_time=1627984879.9,
@@ -34,7 +34,7 @@ class TestBedrock(unittest.TestCase):
                 role="assistant",
                 content=ContentModel(
                     content_type="text",
-                    body="こんにちは！どうされましたか？",
+                    body="Hello! What happened?",
                 ),
                 model=MODEL,
                 create_time=1627984879.9,
@@ -42,9 +42,9 @@ class TestBedrock(unittest.TestCase):
             MessageModel(
                 id="4",
                 role="user",
-                content=ContentModel(
+                content=ContentModel(	
                     content_type="text",
-                    body="AWSを学ぶ良い方法について教えて",
+                    body="Learn about good ways to learn AWS",
                 ),
                 model=MODEL,
                 create_time=1627984879.9,
@@ -61,8 +61,8 @@ class TestBedrock(unittest.TestCase):
 class TestBedrockStream(unittest.TestCase):
     def test_invoke_with_stream(self):
         payload = {
-            "body": '{"max_tokens_to_sample": 500, "temperature": 0.0, "top_k": 250, "top_p": 0.999, "stop_sequences": ["Human: ", "Assistant: "], "prompt": "Human: 有名なジブリ映画10選\\nAssistant: "}',
-            "modelId": "anthropic.claude-v2",
+            "body": '{"max_tokens_to_sample": 500, "temperature": 0.0, "top_k": 250, "top_p": 0.999, "stop_sequences": ["Human: ", "Assistant: "], "prompt": "Human: famous ghibli movies 1\\nAssistant: "}',
+            "modelId": "amazon.titan-tg1-large",
             "accept": "application/json",
             "contentType": "application/json",
         }
