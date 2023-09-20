@@ -23,7 +23,7 @@ const App: React.FC = () => {
   });
 
   I18n.putVocabularies(translations);
-  I18n.setLanguage('ja');
+  I18n.setLanguage('en');
 
   const { switchOpen: switchDrawer } = useDrawer();
   const navigate = useNavigate();
