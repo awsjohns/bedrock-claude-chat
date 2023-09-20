@@ -1,5 +1,7 @@
-FROM python:3.11.4-slim-bullseye
 
+#FROM python:3.11.4-slim-bullseye
+#pull from AWS to avoid rate limiting from Docker
+FROM public.ecr.aws/docker/library/python:3.11.5-bullseye
 RUN apt update && apt install -y curl unzip
 
 WORKDIR /app
