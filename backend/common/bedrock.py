@@ -10,8 +10,10 @@ client = get_bedrock_client()
 
 def _create_body(model: str, prompt: str):
     if model == "titan":
-        parameter = GENERATION_CONFIG
-        parameter["prompt"] = prompt
+        parameter = {}
+	parameter["textGenerationConfig"]= GENERATION_CONFIG
+        parameter["inputText"] = prompt
+	print(json.dumps(parameter)
         return json.dumps(parameter)
     else:
         raise NotImplementedError()
