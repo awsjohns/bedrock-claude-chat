@@ -74,9 +74,8 @@ def handler(event, context):
             # Send completion
             print("sending completion to api gateway")
             print (chunk)
-gatewayapi.post_to_connection(ConnectionId=connection_id, Data=chunk)
+            gatewayapi.post_to_connection(ConnectionId=connection_id, Data=chunk)
             chunk_data = json.loads(chunk.decode("utf-8"))
-            
             completions.append(chunk_data["completion"])
         except Exception as e:
             print(f"Failed to post message: {str(e)}")
