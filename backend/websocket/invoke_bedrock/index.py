@@ -56,13 +56,14 @@ def handler(event, context):
     payload = get_invoke_payload(conversation, chat_input)
 
     try:
-        # Invoke bedrock streaming api
+        print("Invoke bedrock streaming api")
         response = client.invoke_model_with_response_stream(
             body=payload["body"],
             modelId=payload["model_id"],
             accept=payload["accept"],
             contentType=payload["content_type"],
         )
+        print(json.dumps(response))
     except Exception as e:
         print(f"Failed to invoke bedrock: {e}")
         return {"statusCode": 500, "body": "Failed to invoke bedrock."}
@@ -72,6 +73,7 @@ def handler(event, context):
     for chunk in generate_chunk(stream):
         try:
             # Send completion
+            print("sending completion to api gateway")
             gatewayapi.post_to_connection(ConnectionId=connection_id, Data=chunk)
             chunk_data = json.loads(chunk.decode("utf-8"))
             completions.append(chunk_data["completion"])
