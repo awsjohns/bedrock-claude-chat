@@ -1,4 +1,4 @@
-cimport json
+import json
 import os
 
 import boto3
