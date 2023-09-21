@@ -11,7 +11,7 @@ client = get_bedrock_client()
 def _create_body(model: str, prompt: str):
     if model == "titan":
         query = "hey titan, how many patients have the condition asthma?"
-        prompt = f"""input: {query}
+        prompt = f"""input: {query}"""
         parameter = {}
         parameter["textGenerationConfig"] = GENERATION_CONFIG
         parameter["inputText"] = prompt
@@ -23,11 +23,10 @@ def _create_body(model: str, prompt: str):
 
 def _extract_output_text(model: str, response) -> str:
     if model == "titan":
-        output = json.loads(response.get("body").read())
-        output_txt = output["completion"]
-        if output_txt[0] == " ":
-            # claude outputs a space at the beginning of the text
-            output_txt = output_txt[1:]
+        response = json.loads(response.get("body").read())
+        response_body = json.loads(response.get('body').read())
+        output_txt = response_body.get('results')[0].get('outputText')
+
         return output_txt
     else:
         raise NotImplementedError()
