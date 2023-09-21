@@ -28,13 +28,15 @@ const usePostMessageStreaming = create<{
       ws.onmessage = (message) => {
         try {
           const data = JSON.parse(message.data);
+  
+          console.log(data);
 
-          if (data.completion) {
+          if (data.outputText) {
             if (completion.endsWith('▍')) {
               completion = completion.slice(0, -1);
             }
 
-            completion += data.completion + (data.stop_reason ? '' : '▍');
+            completion += data.outputText; // + (data.stop_reason ? '' : '▍');
             dispatch(completion);
           } else if (data.conversationId) {
             conversationId = data.conversationId;
@@ -42,18 +44,18 @@ const usePostMessageStreaming = create<{
           } else {
             ws.close();
             console.error(data);
-            throw new Error('通常とは異なるResponseが返ってきました。');
+            throw new Error('An unusual Response is returned.');
           }
         } catch (e) {
           console.error(e);
-          reject('推論中にエラーが発生しました。');
+          reject('An error occurred during inference');
         }
       };
 
       ws.onerror = (e) => {
         ws.close();
         console.error(e);
-        reject('推論中にエラーが発生しました。');
+        reject('An error occurred during inference');
       };
       ws.onclose = () => {
         resolve(conversationId);
