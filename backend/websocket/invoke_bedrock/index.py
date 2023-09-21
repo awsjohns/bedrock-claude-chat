@@ -63,7 +63,8 @@ def handler(event, context):
             accept=payload["accept"],
             contentType=payload["content_type"],
         )
-        print(json.dumps(response))
+        r = json.loads(response.get('body').read())
+        print(json.dumps(r))
     except Exception as e:
         print(f"Failed to invoke bedrock: {e}")
         return {"statusCode": 500, "body": "Failed to invoke bedrock."}
