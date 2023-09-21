@@ -63,8 +63,6 @@ def handler(event, context):
             accept=payload["accept"],
             contentType=payload["content_type"],
         )
-        r = json.loads(response.get('body').read())
-        print(json.dumps(r))
     except Exception as e:
         print(f"Failed to invoke bedrock: {e}")
         return {"statusCode": 500, "body": "Failed to invoke bedrock."}
@@ -75,8 +73,10 @@ def handler(event, context):
         try:
             # Send completion
             print("sending completion to api gateway")
-            gatewayapi.post_to_connection(ConnectionId=connection_id, Data=chunk)
+            print (chunk)
+gatewayapi.post_to_connection(ConnectionId=connection_id, Data=chunk)
             chunk_data = json.loads(chunk.decode("utf-8"))
+            
             completions.append(chunk_data["completion"])
         except Exception as e:
             print(f"Failed to post message: {str(e)}")
