@@ -4,6 +4,5 @@
 GENERATION_CONFIG = {
     "maxTokenCount": 500,
     "temperature": 0,
-    "topP": 1,
-    "stopSequences": ["Human: ", "Assistant: "],
+    "stopSequences": []
 }

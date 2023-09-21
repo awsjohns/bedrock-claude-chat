@@ -10,6 +10,8 @@ client = get_bedrock_client()
 
 def _create_body(model: str, prompt: str):
     if model == "titan":
+        query = "hey titan, how many patients have the condition asthma?"
+        prompt = f"""input: {query}
         parameter = {}
         parameter["textGenerationConfig"] = GENERATION_CONFIG
         parameter["inputText"] = prompt
