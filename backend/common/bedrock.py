@@ -34,7 +34,7 @@ def _extract_output_text(model: str, response) -> str:
 
 def get_model_id(model: str) -> str:
     if model == "titan":
-        return "amazon.titan-tg1-large"
+        return "amazon.titan-tg1-xlarge"
     else:
         raise NotImplementedError()
 
