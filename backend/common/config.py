@@ -5,5 +5,5 @@ GENERATION_CONFIG = {
     "maxTokenCount": 512,
     "temperature": 0,
     "topP": 0.9,
-    "stopSequences": ["Human: "]
+    "stopSequences": ["|"]
 }

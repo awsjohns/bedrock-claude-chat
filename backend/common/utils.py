@@ -32,6 +32,7 @@ def get_buffer_string(conversations: List[MessageModel]) -> str:
         string_messages.append("Assistant: ")
 
     return "\n".join(string_messages)
+    return " ".join(sting_messages)
 
 
 def get_bedrock_client():
